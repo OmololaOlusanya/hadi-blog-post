@@ -1,26 +1,28 @@
+import { Post } from '@/component/provider/BlogProvider';
+import { fetchPost } from '@/utils/helper';
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap() {
   const currentDate = new Date();
 
   const staticRoutes = [
     {
-      url: 'https://yourwebsite.com',
+      url: 'https://hadi-blog-post.vercel.app',
       lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 1,
     },
     {
-      url: 'https://yourwebsite.com/about',
+      url: 'https://hadi-blog-post.vercel.app/about',
       lastModified: currentDate,
       changeFrequency: 'monthly ',
       priority: 0.8,
     },
   ] as const;
-  const postIds = Array.from({ length: 60 }, (_, index) => index + 1);
-
-  const dynamicRoutes = postIds.map((id) => ({
-    url: `https://yourwebsite.com/${id}`,
+  
+  const posts = await fetchPost();
+  const dynamicRoutes = posts.map((post: Post) => ({
+    url: `https://hadi-blog-post.vercel.app/${post.id}`,
     lastModified: currentDate,
     changeFrequency: 'daily',
     priority: 0.7,

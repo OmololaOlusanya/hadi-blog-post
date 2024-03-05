@@ -26,10 +26,7 @@ export const AddComment: FC<{ id: number }> = ({ id }) => {
   };
 
   return (
-    <Box my={5}>
-      <Typography mb={1} variant="h6">
-        Add Comment
-      </Typography>
+    <Box mb={5}>
       <Formik
         initialValues={{ [text]: '', [name]: '' }}
         validationSchema={validationSchema}

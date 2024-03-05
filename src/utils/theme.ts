@@ -16,6 +16,8 @@ export const Colors = {
   warning: '#E2B93B',
   error: '#EB5757',
   text: '#344054',
+  black: '#000000',
+  lightgrey: '#00000014',
 } as const;
 
 let theme = createTheme({});
@@ -33,10 +35,6 @@ theme = createTheme(
         light: Colors.secondaryLight,
         contrastText: 'white',
       },
-      success: {
-        main: Colors.success,
-        contrastText: 'white',
-      },
       error: {
         main: Colors.error,
         contrastText: 'white',
@@ -49,24 +47,6 @@ theme = createTheme(
     typography: {
       fontFamily: mulish.style.fontFamily,
       fontSize: 16,
-      h1: {
-        fontFamily: montserrat.style.fontFamily,
-        fontWeight: 800,
-        fontSize: theme.typography.pxToRem(56),
-        lineHeight: 1.3,
-      },
-      h2: {
-        fontFamily: montserrat.style.fontFamily,
-        fontWeight: 700,
-        fontSize: theme.typography.pxToRem(48),
-        lineHeight: 1.5,
-      },
-      h3: {
-        fontFamily: montserrat.style.fontFamily,
-        fontWeight: 700,
-        fontSize: theme.typography.pxToRem(40),
-        lineHeight: 1.5,
-      },
       h4: {
         fontFamily: montserrat.style.fontFamily,
         fontWeight: 600,
@@ -94,21 +74,6 @@ theme = createTheme(
         fontFamily: mulish.style.fontFamily,
         fontSize: theme.typography.pxToRem(14),
         lineHeight: 1.225,
-      },
-      caption: {
-        fontFamily: mulish.style.fontFamily,
-        fontSize: theme.typography.pxToRem(12),
-        lineHeight: 1.45,
-      },
-      subtitle1: {
-        fontFamily: mulish.style.fontFamily,
-        fontSize: theme.typography.pxToRem(18),
-        lineHeight: 1.575,
-      },
-      subtitle2: {
-        fontFamily: mulish.style.fontFamily,
-        fontSize: theme.typography.pxToRem(20),
-        lineHeight: 1.75,
       },
       button: {
         fontFamily: montserrat.style.fontFamily,

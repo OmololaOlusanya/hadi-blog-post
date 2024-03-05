@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useState, ReactNode, FC } from 'react';
+import React, { createContext, useState, ReactNode, FC, useMemo } from 'react';
 
 export interface Post {
   id: number;
@@ -64,25 +64,26 @@ export const BlogProvider: FC<{ children: ReactNode; posts: Post[] }> = ({
   const getCurrentPagePosts = () => {
     const indexOfLastPost: number = currentPage * postsPerPage;
     const indexOfFirstPost: number = indexOfLastPost - postsPerPage;
-    return allPosts.slice(indexOfFirstPost, indexOfLastPost);
+    return allPosts?.slice(indexOfFirstPost, indexOfLastPost);
   };
 
-  const totalPages: number = Math.ceil(allPosts.length / postsPerPage);
+  const totalPages: number = Math.ceil(allPosts?.length / postsPerPage);
 
   const updateCurrentPage = (page: number) => setCurrentPage(page);
 
+  const contextValue = useMemo<BlogContextType>(
+    () => ({
+      allPosts,
+      currentPage,
+      getCurrentPagePosts,
+      addCommentToPost,
+      totalPages,
+      updateCurrentPage,
+    }),
+    [allPosts, currentPage]
+  );
+
   return (
-    <BlogContext.Provider
-      value={{
-        allPosts,
-        currentPage,
-        getCurrentPagePosts,
-        addCommentToPost,
-        totalPages,
-        updateCurrentPage,
-      }}
-    >
-      {children}
-    </BlogContext.Provider>
+    <BlogContext.Provider value={contextValue}>{children}</BlogContext.Provider>
   );
 };

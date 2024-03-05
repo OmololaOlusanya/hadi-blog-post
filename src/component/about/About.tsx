@@ -2,6 +2,19 @@ import React from 'react';
 import { StyledContainer, SummaryBox } from '../blog/Details';
 import { Box, Typography } from '@mui/material';
 
+const MessageSection = ({
+  title,
+  content,
+}: {
+  title: string;
+  content: string;
+}) => (
+  <Box my={4}>
+    <Typography variant="h5">{title}</Typography>
+    <Typography>{content}</Typography>
+  </Box>
+);
+
 export const About = () => {
   return (
     <StyledContainer>
@@ -12,22 +25,15 @@ export const About = () => {
           thoughts, experiences, and insights with you.
         </Typography>
       </SummaryBox>
-      <Box my={4}>
-        <Typography variant="h5"> Our Mission:</Typography>
-        <Typography>
-          Our mission is simple: to get you informed and entertained. Through
-          engaging content, insightful articles, and thought-provoking
-          discussions.
-        </Typography>
-      </Box>
-      <Box my={4}>
-        <Typography variant="h5"> Thank You:</Typography>
-        <Typography>
-          Before you go, I want to express my gratitude for being here. Thank
-          you for taking the time to explore Blog Post. I hope you find
-          inspiration, insight, and enjoyment in your visit.
-        </Typography>
-      </Box>
+
+      <MessageSection
+        title="Our Mission:"
+        content="Our mission is simple: to get you informed and entertained. Through engaging content, insightful articles, and thought-provoking discussions."
+      />
+      <MessageSection
+        title="Thank You:"
+        content="Before you go, I want to express my gratitude for being here. Thank you for taking the time to explore Blog Post. I hope you find inspiration, insight, and enjoyment in your visit."
+      />
     </StyledContainer>
   );
 };

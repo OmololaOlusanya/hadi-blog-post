@@ -15,7 +15,10 @@ export const Comments = () => {
   const getTime = (date: Date) =>
     date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   return (
-    <Box>
+    <Box mt={5}>
+      <Typography mb={1} variant="h6">
+        Add Comment
+      </Typography>
       <AddComment id={id} />
       <Box>
         {comments?.map(({ name, text, date }, index) => (
@@ -28,9 +31,10 @@ export const Comments = () => {
             )}
             <Typography>{text}</Typography>
 
-            <Typography variant='body2' sx={{ textAlign: 'end', mt:1 }}>{`${formatDate(
-              date.toString()
-            )} ${getTime(date)}`}</Typography>
+            <Typography
+              variant="body2"
+              sx={{ textAlign: 'end', mt: 1 }}
+            >{`${formatDate(date.toString())} ${getTime(date)}`}</Typography>
           </Stack>
         ))}
       </Box>

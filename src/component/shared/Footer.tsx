@@ -19,7 +19,7 @@ export const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <StyledContainer>
-      <Typography>Copyright © {year} Blog Post. All rights reserved</Typography>
+      <Typography variant='body2'>Copyright © {year} Blog Post. All rights reserved</Typography>
       <Box sx={{ mt: { xs: 2, md: 0 } }}>
         <FacebookIcon sx={{ mr: 1 }} /> <XIcon sx={{ mr: 1 }} />
         <InstagramIcon sx={{ mr: 1 }} />

@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Colors } from '@/utils/theme';
 
 const StyledAppbar = styled(AppBar)(({ theme }) => ({
-  boxShadow: '0px 1px 24px 0px #00000014',
+  boxShadow: `0px 1px 24px 0px ${Colors.lightgrey}`,
   backgroundColor: 'white',
   color: theme.palette.text.primary,
   height: '70px',
