@@ -5,12 +5,33 @@ import CssBaseline from '@mui/material/CssBaseline';
 import theme, { Colors } from '@/utils/theme';
 import { ProgressBarProvider } from '@/component/provider/ProgressBarProvider';
 
-export const metadata: Metadata = {
-  title: { default: 'Blog Post', template: '%s | Blog' },
-  applicationName: 'Blog Post',
+const meta = {
+  title: 'Blog Post',
   description: 'A blog post website to catch up on latest updates',
+  url: 'https://hadi-blog-post.vercel.app/',
+};
+
+export const metadata: Metadata = {
+  title: { default: meta.title, template: '%s | Blog' },
+  applicationName: meta.title,
+  metadataBase: new URL(meta.url),
+  description: meta.description,
   authors: [{ name: 'Blog Writer' }],
   keywords: ['blog', 'post'],
+  twitter: {
+    card: 'summary_large_image',
+    images: `${meta.url}images/logo.jpg`,
+    description: meta.description,
+    title: meta.title,
+  },
+  openGraph: {
+    type: 'website',
+    url: meta.url,
+    title: meta.title,
+    description: meta.description,
+    siteName: meta.title,
+    images: [{ url: `${meta.url}images/logo.jpg` }],
+  },
 };
 
 export const viewport: Viewport = {
