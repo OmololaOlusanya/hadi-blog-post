@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import { forwardRef } from 'react';

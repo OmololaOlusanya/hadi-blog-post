@@ -54,7 +54,7 @@ export const Blogs = () => {
             py: { md: 3 },
           }}
         >
-          {getCurrentPagePosts().map((post) => {
+          {getCurrentPagePosts()?.map((post) => {
             return (
               <Grid key={post.id} xs={12} sm={6} md={4} item>
                 <Container

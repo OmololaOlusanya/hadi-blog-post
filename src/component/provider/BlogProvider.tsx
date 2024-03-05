@@ -1,5 +1,12 @@
 'use client';
-import React, { createContext, useState, ReactNode, FC, useMemo } from 'react';
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  FC,
+  useMemo,
+  useCallback,
+} from 'react';
 
 export interface Post {
   id: number;
@@ -61,11 +68,12 @@ export const BlogProvider: FC<{ children: ReactNode; posts: Post[] }> = ({
       return updatedPosts;
     });
   };
-  const getCurrentPagePosts = () => {
+
+  const getCurrentPagePosts = useCallback(() => {
     const indexOfLastPost: number = currentPage * postsPerPage;
     const indexOfFirstPost: number = indexOfLastPost - postsPerPage;
     return allPosts?.slice(indexOfFirstPost, indexOfLastPost);
-  };
+  }, [allPosts, currentPage, postsPerPage]);
 
   const totalPages: number = Math.ceil(allPosts?.length / postsPerPage);
 
@@ -80,7 +88,7 @@ export const BlogProvider: FC<{ children: ReactNode; posts: Post[] }> = ({
       totalPages,
       updateCurrentPage,
     }),
-    [allPosts, currentPage]
+    [allPosts, currentPage, getCurrentPagePosts, totalPages]
   );
 
   return (

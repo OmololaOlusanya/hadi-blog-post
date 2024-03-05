@@ -19,9 +19,9 @@ export default async function sitemap() {
       priority: 0.8,
     },
   ] as const;
-  
+
   const posts = await fetchPost();
-  const dynamicRoutes = posts.map((post: Post) => ({
+  const dynamicRoutes = posts?.map((post: Post) => ({
     url: `https://hadi-blog-post.vercel.app/${post.id}`,
     lastModified: currentDate,
     changeFrequency: 'daily',
@@ -30,7 +30,7 @@ export default async function sitemap() {
 
   const allRoutes = [
     ...staticRoutes,
-    ...dynamicRoutes,
+    ...(dynamicRoutes ?? []),
   ] as MetadataRoute.Sitemap;
 
   return allRoutes;
